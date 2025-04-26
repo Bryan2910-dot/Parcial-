@@ -17,6 +17,11 @@ namespace Parcial_.Models
         public string? Nombre { get; set; }
         public string? Posicion { get; set; }
         public string? Edad { get; set; }
-        public string? EquipoActual { get; set; }
+        // Relación con el modelo Equipo
+        [Required]
+        public int EquipoId { get; set; }
+
+        [ForeignKey("EquipoId")]
+        public Equipos? Equipo { get; set; }
     }
 }
