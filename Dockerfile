@@ -15,6 +15,6 @@ COPY --from=build-env /app/out .
 RUN ls -la /app
 #CAMBIAR AQUI EL NOMBRE DEL APLICATIVO
 #nombre de tu app busca en bin\Release**\netcore5.0\plantitas.exe
-ENV APP_NET_CORE SweetNela.dll 
+ENV APP_NET_CORE Parcial_.dll 
 
 CMD ASPNETCORE_URLS=http://*:$PORT dotnet $APP_NET_CORE
