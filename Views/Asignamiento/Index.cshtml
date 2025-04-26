@@ -1,0 +1,36 @@
+@model IEnumerable<Parcial_.Models.Asignamiento>
+
+@{
+    ViewBag.Title = "Lista de Asignaciones";
+}
+
+<h1>Lista de Asignaciones</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Asignación ID</th>
+            <th>Jugador ID</th>
+            <th>Equipo ID</th>
+        </tr>
+    </thead>
+    <tbody>
+    @if (ViewBag.Asignaciones != null)
+    {
+        foreach (var asignamiento in ViewBag.Asignaciones)
+        {
+            <tr>
+                <td>@asignamiento.Id</td>
+                <td>@asignamiento.JugadorId</td>
+                <td>@asignamiento.EquipoId</td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="3">No hay asignaciones disponibles.</td>
+        </tr>
+    }
+    </tbody>
+</table>
