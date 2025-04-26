@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Parcial_.Data;
 using Parcial_.Models;
@@ -24,6 +25,7 @@ namespace Parcial_.Controllers
         
         public IActionResult Index()
         {
+            ViewBag.Equipos = _context.DbSetEquipos.ToList(); // Carga la lista de equipos
             return View();
         }
         [HttpPost]
@@ -31,15 +33,26 @@ namespace Parcial_.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.DbSetJugadores.Add(jugador); // Guarda el jugador en la base de datos
-                _context.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    _context.DbSetJugadores.Add(jugador); // Guarda el jugador en la base de datos
+                    _context.SaveChanges();
+                    _logger.LogInformation("Se registró el jugador");
+                    ViewData["Message"] = "Se registró el jugador correctamente";
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Error al registrar el jugador");
+                    ViewData["Message"] = "Error al registrar el jugador: " + ex.Message;
+                }
             }
-
-            ViewBag.Equipos = _context.DbSetEquipos.ToList(); // Recarga la lista de equipos si hay errores
-            return View("Crear", jugador);
+            else
+            {
+                ViewData["Message"] = "Datos de entrada no válidos";
+            }
+            ViewBag.Equipos = _context.DbSetEquipos.ToList();
+            return View("Index");
         }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -10,7 +10,7 @@ using Parcial_.Models;
 
 namespace Parcial_.Controllers
 {
-    [Route("[controller]")]
+    
     public class EquipoController : Controller
     {
         private readonly ILogger<EquipoController> _logger;
@@ -26,7 +26,7 @@ namespace Parcial_.Controllers
         {
             return View();
         }
-         [HttpPost]
+        [HttpPost]
         public IActionResult Guardar(Equipos equipo)
         {
             if (ModelState.IsValid)

@@ -13,8 +13,18 @@ namespace Parcial_.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
+        [Required]
+        public int EquipoId { get; set; } // Clave foránea para Equipo
+
+        [ForeignKey("EquipoId")]
         public Equipos? Equipo { get; set; }
-        public Jugadores? Jugador { get; set; } 
+
+        [Required]
+        public int JugadorId { get; set; } // Clave foránea para Jugador
+
+        [ForeignKey("JugadorId")]
+        public Jugadores? Jugador { get; set; }
 
         
     }

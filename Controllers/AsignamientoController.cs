@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Parcial_.Data;
 using Parcial_.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Parcial_.Controllers
 {
@@ -24,27 +25,25 @@ namespace Parcial_.Controllers
 
         public IActionResult Index()
         {
-            return View();
-        }
-         [HttpPost]
-        public IActionResult Create(Asignamiento asignamiento)
-        {
-            // Validar si el jugador ya está asignado al mismo equipo
-            bool exists = _context.DbSetAsignamiento
-                .Any(a => a.Equipo.Id == asignamiento.Equipo.Id && a.Jugador.Id == asignamiento.Jugador.Id);
+                // Carga las asignaciones completas
+            var asignaciones = _context.DbSetAsignamiento
+                .Include(a => a.Jugador) // Incluye los datos del jugador
+                .Include(a => a.Equipo)  // Incluye los datos del equipo
+                .ToList();
 
-            if (exists)
+            // Almacena las asignaciones en ViewBag
+            ViewBag.Asignaciones = asignaciones;
+
+
+            Debug.WriteLine($"Asignaciones: {asignaciones.Count}");
+            foreach (var asignacion in asignaciones)
             {
-                ModelState.AddModelError("", "El jugador ya está asignado a este equipo.");
-                return View(asignamiento); // Retorna la vista con el mensaje de error
+                Debug.WriteLine($"Asignación ID: {asignacion.Id}, Jugador ID: {asignacion.JugadorId}, Equipo ID: {asignacion.EquipoId}");
             }
 
-            // Guardar la asignación si pasa la validación
-            _context.DbSetAsignamiento.Add(asignamiento);
-            _context.SaveChanges();
-
-            return RedirectToAction("Index");
+            return View();
         }
+         
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
