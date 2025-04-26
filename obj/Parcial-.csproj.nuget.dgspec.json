@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\BRYAN\\clases\\PROGRAMACION 1\\PARCIAL\\Parcial-\\Parcial-.csproj": {}
+    "D:\\BRYAN\\clases\\PROGRAMACION 1\\PARCIAL SE\\Parcial-\\Parcial-.csproj": {}
   },
   "projects": {
-    "D:\\BRYAN\\clases\\PROGRAMACION 1\\PARCIAL\\Parcial-\\Parcial-.csproj": {
+    "D:\\BRYAN\\clases\\PROGRAMACION 1\\PARCIAL SE\\Parcial-\\Parcial-.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\BRYAN\\clases\\PROGRAMACION 1\\PARCIAL\\Parcial-\\Parcial-.csproj",
+        "projectUniqueName": "D:\\BRYAN\\clases\\PROGRAMACION 1\\PARCIAL SE\\Parcial-\\Parcial-.csproj",
         "projectName": "Parcial-",
-        "projectPath": "D:\\BRYAN\\clases\\PROGRAMACION 1\\PARCIAL\\Parcial-\\Parcial-.csproj",
+        "projectPath": "D:\\BRYAN\\clases\\PROGRAMACION 1\\PARCIAL SE\\Parcial-\\Parcial-.csproj",
         "packagesPath": "C:\\Users\\HOME\\.nuget\\packages\\",
-        "outputPath": "D:\\BRYAN\\clases\\PROGRAMACION 1\\PARCIAL\\Parcial-\\obj\\",
+        "outputPath": "D:\\BRYAN\\clases\\PROGRAMACION 1\\PARCIAL SE\\Parcial-\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HOME\\AppData\\Roaming\\NuGet\\NuGet.Config"
