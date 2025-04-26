@@ -15,5 +15,7 @@ namespace Parcial_.Models
         public int Id { get; set; }
         public Equipos? Equipo { get; set; }
         public Jugadores? Jugador { get; set; } 
+
+        
     }
 }
